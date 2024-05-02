@@ -4,6 +4,7 @@ function SearchStock(){
     return(
         <div>
             <Navbar/>
+            <h1>Hello ! Welcome to HaemoHub🩸</h1>
         </div>
     )
 }

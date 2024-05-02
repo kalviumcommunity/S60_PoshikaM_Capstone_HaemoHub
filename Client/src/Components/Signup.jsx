@@ -38,26 +38,17 @@ function Signup(){
                         </div>
                         <div className="mb-4">
                             <input 
-                                aria-describedby="repeat-password-addon" 
-                                aria-label="Repeat Password" 
-                                placeholder=" Repeat Password" 
+                                aria-describedby="confirm-password-addon" 
+                                aria-label="Confirm Password" 
+                                placeholder=" Confirm Password" 
                                 className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" 
                                 type="password"
                             />
                         </div>
-                        <div className="mb-4">
-                            <input
-                                aria-describedby="phone-number-addon"
-                                aria-label="Phone Number"
-                                placeholder="Enter Phone Number"
-                                type="tel"
-                                className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
-                            />
-                        </div>
                         <div className="text-center">
-                            <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 bg-gradient-to-tl from-gray-900 to-slate-800 hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="button">Sign up</button>
+                            <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="button">Sign up</button>
                         </div>
-                        <p className="mt-4 mb-0 leading-normal text-sm">Already have an account? <a className="font-bold text-slate-700" href="./login">Log in</a></p>
+                        <p className="mt-4 mb-0 leading-normal text-sm">Already have an account? <a className="font-bold text-red-600" href="./login">Log in</a></p>
                     </form>
                 </div>
             </div>

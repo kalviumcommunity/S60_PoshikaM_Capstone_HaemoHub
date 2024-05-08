@@ -8,21 +8,24 @@ const app = express()
 dotenv.config()
 app.use(cors())
 app.use(express.json())
+PORT = process.env.PORT
+
 
 mongoose.connect(process.env.CONNECTDB_URL)
 .then(() => {
-    console.log("Connect with mongodb database")
+    console.log("Connected with mongodb database")
 })
 .catch(() =>{
     console.log("error in connecting")
 })
 
+
 app.use("/", routes)
 
 app.get("/", (request, response) => {
-    response.send("Hi ! Iam server")
+    response.send("Hello! I am the server.")
 })
 
-app.listen(3006, () => {
+app.listen(PORT, () => {
     console.log("Server is successfully working !!")
 })

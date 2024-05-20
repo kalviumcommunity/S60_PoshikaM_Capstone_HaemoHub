@@ -1,8 +1,14 @@
 const express = require("express");
+const { userCollection, donorCollection, bloodDataCollection } = require("./schema");
+const bloodBankData = require("./BloodData");
+
 const app = express();
 
-app.get("/get", (request, response) => {
-    response.send("I am get request.")
+app.get("/getData", (request, response) => {
+    // response.send("I am get request.")
+    bloodDataCollection.find({})
+    .then((bloodBankData) => { response.json({bloodBankData}) })
+    .catch((error) => { response.json({error}) })
 })
 
 app.post("/post", (request, response) => {

@@ -1,5 +1,7 @@
-{
-    "Andhra Pradesh": [
+const bloodBankData = [
+    {
+      state:"Andhra Pradesh",
+      bloodData:[
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -40,8 +42,10 @@
           "units_available": 17,
           "blood_bank": "Warangal Blood Bank"
         }
-    ],
-    "Arunachal Pradesh": [
+    ]},
+    {
+      state:"Arunachal Pradesh",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -82,8 +86,10 @@
           "units_available": 10,
           "blood_bank": "Tawang Blood Bank"
         }
-    ],
-    "Assam": [
+    ]},
+    {
+      state:"Assam",
+      bloodData: [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -124,9 +130,10 @@
           "units_available": 10,
           "blood_bank": "Bongaigaon Blood Bank"
         }
-    ],
-    "Bihar": [
-        {
+    ]},
+    {
+      state:"Bihar",
+      bloodData: [ {
           "blood_group": "A+",
           "units_available": 15,
           "blood_bank": "Patna Blood Bank"
@@ -166,8 +173,10 @@
           "units_available": 17,
           "blood_bank": "Arrah Blood Bank"
         }
-    ],
-    "Chhattisgarh": [
+    ]},
+    {
+      state:"Chhattisgarh",
+      bloodData: [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -208,8 +217,10 @@
           "units_available": 17,
           "blood_bank": "Ambikapur Blood Bank"
         }
-    ],
-    "Goa": [
+    ]},
+    {
+      state : "Goa",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -250,8 +261,10 @@
           "units_available": 16,
           "blood_bank": "Sanguem Blood Bank"
         }
-    ],
-    "Gujarat": [
+    ]},
+    {
+      state : "Gujarat",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -292,8 +305,10 @@
           "units_available": 10,
           "blood_bank": "Anand Blood Bank"
         }
-    ],
-    "Haryana": [
+    ]},
+    {
+      state : "Haryana", 
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -334,8 +349,10 @@
           "units_available": 17,
           "blood_bank": "Karnal Blood Bank"
         }
-    ],
-    "Himachal Pradesh": [
+    ]},
+    {
+      state : "Himachal Pradesh",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -376,8 +393,10 @@
           "units_available": 16,
           "blood_bank": "Una Blood Bank"
         }
-    ],
-    "Jharkhand": [
+    ]},
+    {
+      state : "Jharkhand", 
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -418,8 +437,10 @@
           "units_available": 10,
           "blood_bank": "Ramgarh Blood Bank"
         }
-    ],
-    "Karnataka": [
+    ]},
+    {
+      state : "Karnataka",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -460,8 +481,10 @@
           "units_available": 17,
           "blood_bank": "Shimoga Blood Bank"
         }
-    ],
-    "Kerala": [
+    ]},
+    {
+      state : "Kerala",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -502,8 +525,10 @@
           "units_available": 16,
           "blood_bank": "Malappuram Blood Bank"
         }
-    ],
-    "Madhya Pradesh": [
+    ]},
+    {
+      state : "Madhya Pradesh",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -544,8 +569,10 @@
           "units_available": 17,
           "blood_bank": "Satna Blood Bank"
         }
-    ],
-    "Maharashtra": [
+    ]},
+    {
+      state : "Maharashtra",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -586,8 +613,10 @@
           "units_available": 17,
           "blood_bank": "Kolhapur Blood Bank"
         }
-    ],
-    "Manipur": [
+    ]},
+    {
+      state : "Manipur",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -628,8 +657,10 @@
           "units_available": 16,
           "blood_bank": "Tamenglong Blood Bank"
         }
-    ],
-    "Meghalaya": [
+    ]},
+    {
+      state : "Meghalaya",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -670,8 +701,10 @@
           "units_available": 17,
           "blood_bank": "Khliehriat Blood Bank"
         }
-    ],
-    "Mizoram": [
+    ]},
+    {
+      state : "Mizoram",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -712,8 +745,10 @@
           "units_available": 16,
           "blood_bank": "Mamit Blood Bank"
         }
-    ],
-    "Nagaland": [
+    ]},
+    {
+      state : "Nagaland",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -754,8 +789,10 @@
           "units_available": 10,
           "blood_bank": "Peren Blood Bank"
         }
-    ],
-    "Odisha": [
+    ]},
+    {
+      state : "Odisha",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -796,8 +833,10 @@
           "units_available": 17,
           "blood_bank": "Bargarh Blood Bank"
         }
-    ],
-    "Punjab": [
+    ]},
+    {
+      state : "Punjab",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -838,8 +877,10 @@
           "units_available": 16,
           "blood_bank": "Pathankot Blood Bank"
         }
-    ],
-    "Rajasthan": [
+    ]},
+    {
+      state : "Rajasthan",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 12,
@@ -880,8 +921,10 @@
           "units_available": 10,
           "blood_bank": "Sikar Blood Bank"
         }
-    ],
-    "Sikkim": [
+    ]},
+    {
+      state : "Sikkim",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 13,
@@ -922,8 +965,10 @@
           "units_available": 12,
           "blood_bank": "Rangpo Blood Bank"
         }
-    ],
-    "Tamil Nadu": [
+    ]},
+    {
+      state : "Tamil Nadu",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 10,
@@ -964,8 +1009,10 @@
           "units_available": 11,
           "blood_bank": "Erode Blood Bank"
         }
-    ],
-    "Telangana": [
+    ]},
+    {
+      state : "Telangana",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -1006,8 +1053,10 @@
           "units_available": 17,
           "blood_bank": "Siddipet Blood Bank"
         }
-    ],
-    "Tripura": [
+    ]},
+    {
+      state : "Tripura",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -1048,8 +1097,10 @@
           "units_available": 16,
           "blood_bank": "Sonamura Blood Bank"
         }
-    ],
-    "Uttar Pradesh": [
+    ]},
+    {
+      state : "Uttar Pradesh",
+      bloodData : [
         {
           "blood_group": "A+",
           "units_available": 14,
@@ -1090,8 +1141,10 @@
           "units_available": 16,
           "blood_bank": "Aligarh Blood Bank"
         }
-      ],
-      "Uttarakhand": [
+      ]},
+      {
+        state : "Uttarakhand",
+        bloodData : [
         {
           "blood_group": "A+",
           "units_available": 15,
@@ -1132,89 +1185,95 @@
           "units_available": 17,
           "blood_bank": "Mussoorie Blood Bank"
         }
-      ],
-      "West Bengal": [
+      ]},
+      {
+        state : "West Bengal",
+        bloodData : [
+          {
+            "blood_group": "A+",
+            "units_available": 14,
+            "blood_bank": "Kolkata Blood Bank"
+          },
+          {
+            "blood_group": "A-",
+            "units_available": 19,
+            "blood_bank": "Howrah Blood Bank"
+          },
+          {
+            "blood_group": "B+",
+            "units_available": 16,
+            "blood_bank": "Durgapur Blood Bank"
+          },
+          {
+            "blood_group": "B-",
+            "units_available": 11,
+            "blood_bank": "Asansol Blood Bank"
+          },
+          {
+            "blood_group": "AB+",
+            "units_available": 24,
+            "blood_bank": "Siliguri Blood Bank"
+          },
+          {
+            "blood_group": "AB-",
+            "units_available": 9,
+            "blood_bank": "Bardhaman Blood Bank"
+          },
+          {
+            "blood_group": "O+",
+            "units_available": 21,
+            "blood_bank": "Haldia Blood Bank"
+          },
+          {
+            "blood_group": "O-",
+            "units_available": 16,
+            "blood_bank": "Krishnanagar Blood Bank"
+          }
+        ]},
         {
-          "blood_group": "A+",
-          "units_available": 14,
-          "blood_bank": "Kolkata Blood Bank"
-        },
-        {
-          "blood_group": "A-",
-          "units_available": 19,
-          "blood_bank": "Howrah Blood Bank"
-        },
-        {
-          "blood_group": "B+",
-          "units_available": 16,
-          "blood_bank": "Durgapur Blood Bank"
-        },
-        {
-          "blood_group": "B-",
-          "units_available": 11,
-          "blood_bank": "Asansol Blood Bank"
-        },
-        {
-          "blood_group": "AB+",
-          "units_available": 24,
-          "blood_bank": "Siliguri Blood Bank"
-        },
-        {
-          "blood_group": "AB-",
-          "units_available": 9,
-          "blood_bank": "Bardhaman Blood Bank"
-        },
-        {
-          "blood_group": "O+",
-          "units_available": 21,
-          "blood_bank": "Haldia Blood Bank"
-        },
-        {
-          "blood_group": "O-",
-          "units_available": 16,
-          "blood_bank": "Krishnanagar Blood Bank"
-        }
-      ],
-      "Puducherry": [
-        {
-          "blood_group": "A+",
-          "units_available": 15,
-          "blood_bank": "Puducherry Blood Bank"
-        },
-        {
-          "blood_group": "A-",
-          "units_available": 20,
-          "blood_bank": "Karaikal Blood Bank"
-        },
-        {
-          "blood_group": "B+",
-          "units_available": 18,
-          "blood_bank": "Mahe Blood Bank"
-        },
-        {
-          "blood_group": "B-",
-          "units_available": 12,
-          "blood_bank": "Yanam Blood Bank"
-        },
-        {
-          "blood_group": "AB+",
-          "units_available": 25,
-          "blood_bank": "Puducherry Blood Bank"
-        },
-        {
-          "blood_group": "AB-",
-          "units_available": 10,
-          "blood_bank": "Karaikal Blood Bank"
-        },
-        {
-          "blood_group": "O+",
-          "units_available": 22,
-          "blood_bank": "Mahe Blood Bank"
-        },
-        {
-          "blood_group": "O-",
-          "units_available": 17,
-          "blood_bank": "Yanam Blood Bank"
-        }
-      ]
-  }
+          state : "Puducherry",
+          bloodData : [
+          {
+            "blood_group": "A+",
+            "units_available": 15,
+            "blood_bank": "Puducherry Blood Bank"
+          },
+          {
+            "blood_group": "A-",
+            "units_available": 20,
+            "blood_bank": "Karaikal Blood Bank"
+          },
+          {
+            "blood_group": "B+",
+            "units_available": 18,
+            "blood_bank": "Mahe Blood Bank"
+          },
+          {
+            "blood_group": "B-",
+            "units_available": 12,
+            "blood_bank": "Yanam Blood Bank"
+          },
+          {
+            "blood_group": "AB+",
+            "units_available": 25,
+            "blood_bank": "Puducherry Blood Bank"
+          },
+          {
+            "blood_group": "AB-",
+            "units_available": 10,
+            "blood_bank": "Karaikal Blood Bank"
+          },
+          {
+            "blood_group": "O+",
+            "units_available": 22,
+            "blood_bank": "Mahe Blood Bank"
+          },
+          {
+            "blood_group": "O-",
+            "units_available": 17,
+            "blood_bank": "Yanam Blood Bank"
+          }
+        ]}
+]
+
+module.exports = bloodBankData;

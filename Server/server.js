@@ -1,29 +1,24 @@
 const express = require("express")
-const mongoose = require("mongoose")
-const dotenv = require("dotenv")
 const cors = require("cors")
 const routes = require("./routes")
+const PORT = process.env.PORT
+const { userCollection, donorCollection, bloodDataCollection } = require("./schema")
 
 const app = express()
-dotenv.config()
 app.use(cors())
 app.use(express.json())
-PORT = process.env.PORT
 
-
-mongoose.connect(process.env.CONNECTDB_URL)
-.then(() => {
-    console.log("Connected with mongodb database")
-})
-.catch(() =>{
-    console.log("error in connecting")
-})
-
+function checkStatus(){
+    return bloodDataCollection.db.readyState === 1;
+}
 
 app.use("/", routes)
 
 app.get("/", (request, response) => {
-    response.send("Hello! I am the server.")
+    // response.send("Hello! I am the server.")
+    const connectionStatus = checkStatus();
+    let check = connectionStatus ? "Connected" : "Not Connected";
+    response.send(check)
 })
 
 app.listen(PORT, () => {

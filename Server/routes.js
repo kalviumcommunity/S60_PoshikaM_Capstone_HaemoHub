@@ -1,6 +1,5 @@
 const express = require("express");
 const { userCollection, donorCollection, bloodDataCollection } = require("./schema");
-const bloodBankData = require("./BloodData");
 
 const app = express();
 
@@ -21,6 +20,13 @@ app.put("/put/:id", (request, response) => {
 
 app.delete("/delete/:id", (request, response) => {
     response.send("I am delete request")
+})
+
+// Users
+app.post("/signup", (request, response) => {
+    userCollection.create(request.body)
+    .then(data => response.json(data))
+    .catch(error => response.json(error))
 })
 
 module.exports = app;

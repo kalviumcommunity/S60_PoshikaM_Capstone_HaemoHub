@@ -1,4 +1,41 @@
+import { useState } from "react";
+import axios from "axios";
+
 function Signup(){
+
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [confirmPassword, setConfirm] = useState("")
+
+    const handleName = (event) => {
+        setName(event.target.value)
+    }
+
+    const handleEmail = (event) => {
+        setEmail(event.target.value)
+    }
+
+    const handlePassword = (event) => {
+        setPassword(event.target.value)
+    }
+
+    const handleConfirm = (event) => {
+        setConfirm(event.target.value)
+    }
+
+    const handleSignup = (event) => {
+        event.preventDefault()
+
+        axios.post("http://localhost:3006/signup", { name, email, password, confirmPassword })
+        .then(response => {
+            console.log(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     return(
         <div>
             <div className="w-full max-w-full px-3 mx-auto mt-0 md:flex-0 shrink-0">
@@ -8,9 +45,10 @@ function Signup(){
                     </div>
                 </div>
                 <div className="flex-auto p-6">
-                    <form role="form text-left">
+                    <form role="form text-left" onSubmit={handleSignup}>
                         <div className="mb-4">
-                            <input 
+                            <input
+                                onChange={handleName}
                                 aria-describedby="email-addon" 
                                 aria-label="Name" 
                                 placeholder="Name" 
@@ -19,7 +57,8 @@ function Signup(){
                             />
                         </div>
                         <div className="mb-4">
-                            <input 
+                            <input
+                                onChange={handleEmail}
                                 aria-describedby="email-addon" 
                                 aria-label="Email" 
                                 placeholder="Email"
@@ -28,7 +67,8 @@ function Signup(){
                             />
                         </div>
                         <div className="mb-4">
-                            <input 
+                            <input
+                                onChange={handlePassword}
                                 aria-describedby="password-addon" 
                                 aria-label="Password" 
                                 placeholder="Password" 
@@ -37,16 +77,17 @@ function Signup(){
                             />
                         </div>
                         <div className="mb-4">
-                            <input 
+                            <input
+                            onChange={handleConfirm}
                                 aria-describedby="confirm-password-addon" 
                                 aria-label="Confirm Password" 
-                                placeholder=" Confirm Password" 
+                                placeholder="Confirm Password" 
                                 className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" 
                                 type="password"
                             />
                         </div>
                         <div className="text-center">
-                            <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="button">Sign up</button>
+                            <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="submit">Sign up</button>
                         </div>
                         <p className="mt-4 mb-0 leading-normal text-sm">Already have an account? <a className="font-bold text-red-600" href="./login">Log in</a></p>
                     </form>

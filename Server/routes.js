@@ -24,9 +24,24 @@ app.delete("/delete/:id", (request, response) => {
 
 // Users
 app.post("/signup", (request, response) => {
+
+    if(request.body.password != request.body.confirmPassword){
+        return response.status(400).json({ 
+            errors : {
+                confirmPassword: { message : "Passwords do not match" }
+            } 
+        })
+    }
+
     userCollection.create(request.body)
     .then(data => response.json(data))
-    .catch(error => response.json(error))
+    .catch(error => {
+        if(error.name === "ValidationError"){
+            response.status(400).json({ errors : error.errors })
+        }else{
+            response.status(500).json( { message : "Internal Server error"} )
+        }
+    })
 })
 
 module.exports = app;

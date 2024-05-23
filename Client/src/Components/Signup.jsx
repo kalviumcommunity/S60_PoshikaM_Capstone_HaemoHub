@@ -7,6 +7,7 @@ function Signup(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirm] = useState("")
+    const [error, setError] = useState({})
 
     const handleName = (event) => {
         setName(event.target.value)
@@ -32,7 +33,11 @@ function Signup(){
             console.log(response.data)
         })
         .catch(error => {
-            console.log(error)
+            if(error.response && error.response.data && error.response.data.errors){
+                setError(error.response.data.errors)
+            }else{
+                setError({ general : "Unexpected error ocurred" })
+            }
         })
     }
 
@@ -55,6 +60,7 @@ function Signup(){
                                 className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" 
                                 type="text"
                             />
+                            {error.name && <p>{error.name.message}</p>}
                         </div>
                         <div className="mb-4">
                             <input
@@ -66,6 +72,7 @@ function Signup(){
                                 type="email"
                             />
                         </div>
+                        {error.email && <p>{error.email.message}</p>}
                         <div className="mb-4">
                             <input
                                 onChange={handlePassword}
@@ -76,6 +83,7 @@ function Signup(){
                                 type="password"
                             />
                         </div>
+                        {error.password && <p>{error.password.message}</p>}
                         <div className="mb-4">
                             <input
                             onChange={handleConfirm}
@@ -86,6 +94,7 @@ function Signup(){
                                 type="password"
                             />
                         </div>
+                        {error.confirmPassword && <p>{error.confirmPassword.message}</p>}
                         <div className="text-center">
                             <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="submit">Sign up</button>
                         </div>

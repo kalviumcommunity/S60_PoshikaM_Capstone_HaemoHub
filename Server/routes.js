@@ -38,7 +38,22 @@ app.post("/signup", (request, response) => {
     .catch(error => {
         if(error.name === "ValidationError"){
             response.status(400).json({ errors : error.errors })
-        }else{
+        }
+        else if(error.code === 11000 && error.keyValue.email){
+            response.status(400).json({
+                errors : {
+                    email : { message : "Email already exists. Try to Log in or give other email" }                
+                }
+            })
+        }
+        else if(error.code === 11000 && error.keyValue.name){
+            response.status(400).json({
+                errors : {
+                    name : { message : "UserName is already taken. Please give some other name" }
+                }
+            })
+        }
+        else{
             response.status(500).json( { message : "Internal Server error"} )
         }
     })

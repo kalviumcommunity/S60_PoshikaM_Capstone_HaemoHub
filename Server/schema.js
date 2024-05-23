@@ -6,21 +6,21 @@ dotenv.config()
 const userSchema = mongoose.Schema({
     name : { 
         type : String, 
-        required : true, 
+        required : [true, "Please fill your name"], 
         unique : true 
     },
     email : { 
         type : String, 
-        required : true, 
+        required : [true, "Please fill your email"], 
         unique : true 
     },
     password : { 
         type : String, 
-        required : true 
+        required : [true, "Please fill the password"] 
     },
     confirmPassword : { 
         type : String, 
-        required : true 
+        required : [true, "Please confirm your password"] 
     }
 })
 

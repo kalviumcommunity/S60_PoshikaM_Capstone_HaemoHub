@@ -1,7 +1,11 @@
-function States(){
+function States({handleState}){
     return(
         <div>
-            <select className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow">
+            <select 
+                className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow"
+                onChange={handleState}
+                required
+            >
                 <option value="">Select a state</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -31,11 +35,6 @@ function States(){
                 <option value="Uttar Pradesh">Uttar Pradesh</option>
                 <option value="Uttarakhand">Uttarakhand</option>
                 <option value="West Bengal">West Bengal</option>
-                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                <option value="Chandigarh">Chandigarh</option>
-                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
-                <option value="Lakshadweep">Lakshadweep</option>
-                <option value="Delhi">Delhi</option>
                 <option value="Puducherry">Puducherry</option>
             </select>
         </div>

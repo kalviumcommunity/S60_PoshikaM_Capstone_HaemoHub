@@ -1,83 +1,11 @@
 const mongoose = require("mongoose")
-const bloodBankData = require("./BloodData")
 const dotenv = require("dotenv")
+const BloodBankData = require("./BloodBankData")
+const userSchema = require("./Schemas/userSchema")
+const bloodBankSchema = require("./Schemas/bloodBankSchema")
+const donorSchema = require("./Schemas/donorSchema")
+const StockSchema = require("./Schemas/bloodStockSchema")
 dotenv.config()
-
-const userSchema = mongoose.Schema({
-    name : { 
-        type : String, 
-        required : [true, "Please fill your name"], 
-        unique : true 
-    },
-    email : { 
-        type : String, 
-        required : [true, "Please fill your email"], 
-        unique : true 
-    },
-    password : { 
-        type : String, 
-        required : [true, "Please fill the password"] 
-    },
-    confirmPassword : { 
-        type : String, 
-        required : [true, "Please confirm your password"] 
-    }
-})
-
-const donorSchema = mongoose.Schema({
-    name : { 
-        type : String, 
-        required : true, 
-        unique : true 
-    },
-    email : { 
-        type : String, 
-        required : true, 
-        unique : true 
-    },
-    Phnumber : { 
-        type : Number, 
-        required : true 
-    },
-    Gender :  { 
-        type : String, 
-        required : true 
-    },
-    age : { 
-        type : Number, 
-        required : true 
-    },
-    password : { 
-        type : String, 
-        required : true 
-    },
-    confirmPassword : { 
-        type : String, 
-        required : true 
-    },
-    state : { 
-        type : String, 
-        required : true 
-    }
-})
-
-const stateSchema = mongoose.Schema({
-    state : String,
-    bloodData:[{
-        blood_group : { 
-            type : String, 
-            required : true 
-        },
-        units_available : { 
-            type : String, 
-            required : true 
-        },
-        blood_bank : { 
-            type : String, 
-            required : true 
-        }
-    }]
-})
 
 // Connecting with MongoDB
 mongoose.connect(process.env.CONNECTDB_URL)
@@ -90,10 +18,11 @@ mongoose.connect(process.env.CONNECTDB_URL)
 
 const userCollection = mongoose.model("userData", userSchema)
 const donorCollection = mongoose.model("donorData", donorSchema)
-const bloodDataCollection = mongoose.model("bloodData", stateSchema)
+const bloodDataCollection = mongoose.model("bloodStockData", StockSchema)
+const bloodBankCollection = mongoose.model("bloodBankData", bloodBankSchema)
 
-// bloodDataColllection.insertMany(bloodBankData)
+// bloodDataCollection.insertMany(BloodBankData)
 // .then(() => console.log("Blood Data is added to mongodb"))
 // .catch((error) => console.log("Error in sending data to mongodb",error))
 
-module.exports = { userCollection, donorCollection, bloodDataCollection }
+module.exports = { userCollection, donorCollection, bloodDataCollection, bloodBankCollection }

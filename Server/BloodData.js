@@ -1,4 +1,4 @@
-const bloodBankData = [
+const bloodData = [
     {
       state:"Andhra Pradesh",
       bloodData:[
@@ -1276,4 +1276,4 @@ const bloodBankData = [
         ]}
 ]
 
-module.exports = bloodBankData;
+module.exports = bloodData;

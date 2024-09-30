@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
 import Dropdown from "./Dropdown";
+import ProfileUpdateButton from "./ProfileUpdateBtn";
 
 function Navbar(){
 
@@ -32,6 +33,11 @@ function Navbar(){
             <div className="flex justify-end">
                 {user?.role === "bloodbank" && (
                     <Dropdown/>
+                )}
+            </div>
+            <div className="flex justify-end">
+                {user?.role === "user" && (
+                    <ProfileUpdateButton/>
                 )}
             </div>
         </div>

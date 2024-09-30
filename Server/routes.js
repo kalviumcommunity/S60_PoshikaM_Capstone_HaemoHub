@@ -124,18 +124,30 @@ app.delete("/delete/:id", (request, response) => {
 })
 
 // Users
-app.post("/signup", (request, response) => {
+app.post("/signup", async(request, response) => {
 
-    if(request.body.password != request.body.confirmPassword){
-        return response.status(400).json({ 
-            errors : {
-                confirmPassword: { message : "Password do not match" }
-            } 
-        })
-    }
+const {name, email, password} = request.body;
 
-    userCollection.create(request.body)
-    .then(data => response.json(data))
+    const hapassword = await passHash(password)
+
+    userCollection.create({
+        name,
+        email,
+        password : hapassword,
+    })
+    .then(user => {
+        const token = jwt.sign(
+            { id: user._id, email: user.email, role: user.role }, 
+            process.env.SECRET, 
+            // { expiresIn: '1h' } // Token expiration time
+        );
+
+        response.json({ 
+            message: "User registered successfully", 
+            token, 
+            user: { id: user._id, email: user.email, role: user.role }
+        });
+    })
     .catch(error => {
         if(error.name === "ValidationError"){
             response.status(400).json({ errors : error.errors })
@@ -159,5 +171,56 @@ app.post("/signup", (request, response) => {
         }
     })
 })
+
+app.post("/Login", async (request, response) => {
+    try{
+        const email = request.body.email.trim()
+        const password = request.body.password.trim()
+
+        const user = await userCollection.findOne({ email }).lean()
+
+        if(!user){
+            return response.json({ error : "no user found"})
+        }
+
+        const passMatch = comparePassword(password, user.password)
+        if(!passMatch){
+            return response.status(400).json({ error : "Invalid Password"})
+        }
+
+        const token = jwt.sign(
+            { id : user._id, email : user.email, role : user.role },
+            process.env.SECRET
+        )
+
+        response.json({
+            message : "Login Successful",
+            token,
+            user : { id : user._id, email : user.email, role : user.role }
+        })
+    }
+    catch{
+        console.log("Login Error")
+        response.status(500).json({ message : "Internal Server error"})
+    }
+})
+
+app.post("/upload-profile-image", async (request, response) => {
+    const { user, imageUrl } = request.body;
+
+    console.log("Received user ID:", user.id);
+    console.log("Received image URL:", imageUrl);
+
+    try {
+        await userCollection.updateOne(
+            { _id: user.id },
+            { $set: { profileImage: imageUrl } }
+        );
+
+        response.json({ message: "Profile image updated successfully!" });
+    } catch (error) {
+        response.status(500).json({ message: "Failed to update profile image" });
+    }
+});
 
 module.exports = app;

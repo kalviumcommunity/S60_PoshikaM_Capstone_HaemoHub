@@ -15,9 +15,12 @@ const userSchema = mongoose.Schema({
         type : String, 
         required : [true, "*password is required"] 
     },
-    confirmPassword : { 
-        type : String, 
-        required : [true, "*please confirm your password"] 
+    role : {
+        type : String,
+        default : "user"
+    },
+    image : {
+        type : String
     }
 })
 

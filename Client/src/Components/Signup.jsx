@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import { UserContext } from "./UserContext";
+import { useNavigate } from "react-router-dom";
 
 function Signup(){
 
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirm] = useState("")
     const [error, setError] = useState({})
+    const {user, setUser} = useContext(UserContext)
+    const navigate = useNavigate()
 
     const handleName = (event) => {
         setName(event.target.value)
@@ -21,16 +24,16 @@ function Signup(){
         setPassword(event.target.value)
     }
 
-    const handleConfirm = (event) => {
-        setConfirm(event.target.value)
-    }
-
-    const handleSignup = (event) => {
+    const handleSignup = async(event) => {
         event.preventDefault()
 
-        axios.post("http://localhost:3006/signup", { name, email, password, confirmPassword })
+        axios.post("http://localhost:3006/signup", { name, email, password })
         .then(response => {
-            console.log(response.data)
+            navigate("/")
+            document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = `token=${response.data.token}; path=/; expires=${new Date(Date.now() + 86400000).toUTCString()}; SameSite=Lax;`;
+            setUser(response.data.user)
         })
         .catch(error => {
             if(error.response && error.response.data && error.response.data.errors){
@@ -84,17 +87,6 @@ function Signup(){
                             />
                         </div>
                         {error.password && <p className="text-red-600">{error.password.message}</p>}
-                        <div className="mb-4">
-                            <input
-                            onChange={handleConfirm}
-                                aria-describedby="confirm-password-addon" 
-                                aria-label="Confirm Password" 
-                                placeholder="Confirm Password" 
-                                className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" 
-                                type="password"
-                            />
-                        </div>
-                        {error.confirmPassword && <p className="text-red-600">{error.confirmPassword.message}</p>}
                         <div className="text-center">
                             <button className="inline-block w-full px-6 py-3 mt-6 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="submit">Sign up</button>
                         </div>

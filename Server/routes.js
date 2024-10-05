@@ -124,6 +124,13 @@ app.delete("/delete/:id", (request, response) => {
 })
 
 // Users
+app.get("/user", (request, response) => {
+    // response.send("I am get request.")
+    userCollection.find({})
+    .then((bloodBankData) => { response.json({bloodBankData}) })
+    .catch((error) => { response.json({error}) })
+})
+
 app.post("/signup", async(request, response) => {
 
 const {name, email, password} = request.body;

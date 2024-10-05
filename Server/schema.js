@@ -1,6 +1,5 @@
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
-const BloodBankData = require("./BloodBankData")
 const userSchema = require("./Schemas/userSchema")
 const bloodBankSchema = require("./Schemas/bloodBankSchema")
 const donorSchema = require("./Schemas/donorSchema")

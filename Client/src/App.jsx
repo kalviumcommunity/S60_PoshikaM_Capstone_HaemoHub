@@ -12,6 +12,8 @@ import BloodBankLogin from './Components/BloodBankLogin'
 import { UserContextProvider } from './Components/UserContext'
 import BloodStockUpdate from './Components/BloodStockUpdate'
 import { Toaster } from 'react-hot-toast';
+import Search from './Components/Search'
+import Footer from './Components/Footer'
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
         <Route path='/BloodBankSignup' element={<BloodBankSignup/>}></Route>
         <Route path='/BloodBankLogin' element={<BloodBankLogin/>}></Route>
         <Route path='/BloodStockUpdate' element={<BloodStockUpdate/>}></Route>
+        <Route path='Search' element={<Search/>}></Route>
+        <Route path='' element={<Footer/>}></Route>
         <Route path='*' element={<SearchStock/>}></Route>
       </Routes>
       </UserContextProvider>

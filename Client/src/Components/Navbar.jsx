@@ -35,6 +35,14 @@ function Navbar() {
                                 <Link to="/AboutUs">
                                     <button className="text-red-600 bg-white-700 px-4 py-2 transition duration-200 ease-in-out hover:text-white hover:bg-red-700 active:bg-red-700 focus:outline-non text-lg font-medium text-lg">About Us</button>
                                 </Link>
+                                <Link to="/Stories">
+                                    <button className="text-red-600 bg-white-700 px-4 py-2 transition duration-200 ease-in-out hover:text-white hover:bg-red-700 active:bg-red-700 focus:outline-non text-lg font-medium text-lg">Read Stories</button>
+                                </Link>
+                                {user?.role === "user" && (
+                                    <Link to="/writeStory">
+                                        <button className="text-red-600 bg-white-700 px-4 py-2 transition duration-200 ease-in-out hover:text-white hover:bg-red-700 active:bg-red-700 focus:outline-non text-lg font-medium text-lg">Write Story</button>
+                                    </Link>
+                                )}
                             </div>
                         </div>
                     </div>

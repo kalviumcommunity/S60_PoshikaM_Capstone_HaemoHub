@@ -4,6 +4,7 @@ const userSchema = require("./Schemas/userSchema")
 const bloodBankSchema = require("./Schemas/bloodBankSchema")
 const donorSchema = require("./Schemas/donorSchema")
 const StockSchema = require("./Schemas/bloodStockSchema")
+const storySchema = require("./Schemas/storySchema")
 dotenv.config()
 
 // Connecting with MongoDB
@@ -19,9 +20,10 @@ const userCollection = mongoose.model("userData", userSchema)
 const donorCollection = mongoose.model("donorData", donorSchema)
 const bloodDataCollection = mongoose.model("bloodStockData", StockSchema)
 const bloodBankCollection = mongoose.model("bloodBankData", bloodBankSchema)
+const storyCollection = mongoose.model("storyData", storySchema)
 
 // bloodDataCollection.insertMany(BloodBankData)
 // .then(() => console.log("Blood Data is added to mongodb"))
 // .catch((error) => console.log("Error in sending data to mongodb",error))
 
-module.exports = { userCollection, donorCollection, bloodDataCollection, bloodBankCollection }
+module.exports = { userCollection, donorCollection, bloodDataCollection, bloodBankCollection, storyCollection }

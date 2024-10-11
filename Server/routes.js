@@ -1,13 +1,31 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const cookieparser = require("cookie-parser")
-const { userCollection, donorCollection, bloodDataCollection, bloodBankCollection } = require("./schema");
+const { userCollection, donorCollection, bloodDataCollection, bloodBankCollection, storyCollection } = require("./schema");
 const { passHash, comparePassword } = require("./passHash");
 const AuthenticateToken = require("./auth");
 
 const app = express();
 app.use(cookieparser())
 app.use(express.urlencoded({extended:false}))
+
+app.post("/writeStories", async (request, response) => {
+    const { email, story } = request.body
+
+    storyCollection.create({ email, story })
+    .then(story =>  response.json(story))
+    .catch(error => response.json(error))
+})
+
+app.get('/stories', (req, res) => {
+    storyCollection.find()
+        .then(stories => {
+            res.status(200).json(stories);
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Error fetching stories', error });
+        });
+});
 
 app.get("/getData", (request, response) => {
     // response.send("I am get request.")

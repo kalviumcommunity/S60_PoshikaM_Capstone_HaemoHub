@@ -9,14 +9,6 @@ const app = express();
 app.use(cookieparser())
 app.use(express.urlencoded({extended:false}))
 
-app.post("/writeStories", async (request, response) => {
-    const { email, story } = request.body
-
-    storyCollection.create({ email, story })
-    .then(story =>  response.json(story))
-    .catch(error => response.json(error))
-})
-
 app.get('/stories', (req, res) => {
     storyCollection.find()
         .then(stories => {
@@ -25,6 +17,46 @@ app.get('/stories', (req, res) => {
         .catch(error => {
             res.status(500).json({ message: 'Error fetching stories', error });
         });
+});
+
+app.post("/writeStories", async (request, response) => {
+    const { email, story } = request.body
+
+    storyCollection.create({ email, story })
+    .then(story =>  response.json(story))
+    .catch(error => response.json(error))
+})
+
+app.put("/stories/:id", async (request, response) => {
+    // response.send("I am put request")
+    const { id } = request.params;
+    const { email, story } = request.body;
+
+    try {
+        const updatedStory = await storyCollection.findByIdAndUpdate(id, { email, story }, { new: true });
+        if (!updatedStory) {
+            return response.status(404).json({ error: "Story not found" });
+        }
+        response.status(200).json(updatedStory);
+    } catch (error) {
+        response.status(400).json({ error: "Error updating story", details: error });
+    }
+});
+
+app.delete("/stories/:id", async (req, res) => {
+    // response.send("I am delete request")
+    try {
+        const storyId = req.params.id;
+        const deletedStory = await storyCollection.findByIdAndDelete(storyId);
+
+        if (!deletedStory) {
+            return res.status(404).json({ message: 'Story not found' });
+        }
+
+        res.status(200).json({ message: 'Story deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting story', error });
+    }
 });
 
 app.get("/getData", (request, response) => {
@@ -131,14 +163,6 @@ app.post("/BloodStockUpdate", AuthenticateToken,(request, response) => {
             response.status(400).json({ errors : error.errors })
         }
     })
-})
-
-app.put("/put/:id", (request, response) => {
-    response.send("I am put request")
-})
-
-app.delete("/delete/:id", (request, response) => {
-    response.send("I am delete request")
 })
 
 // Users

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import axios from "axios";
 import { UserContext } from "./UserContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 
 function BloodBankLogin(){
@@ -92,11 +92,13 @@ function BloodBankLogin(){
                     <div className="text-center">
                         <button className="inline-block w-full px-6 py-3 mt-2 mb-2 font-bold text-center text-white uppercase align-middle transition-all bg-red-700 border-0 rounded-lg cursor-pointer active:opacity-85 hover:scale-102 hover:shadow-soft-xs leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:border-slate-700 hover:bg-slate-700 hover:text-white" type="submit">Login</button>
                     </div>
-                    
+                    <div>
+                        <p className="mt-4 mb-0 leading-normal text-sm">Haven't registered Blood Bank? <Link to='/BloodBankSignup'><b className="font-bold text-red-600">Sign up</b></Link></p>
+                    </div>
                 </form>
             </div>
         </div>
     )
 }
 
-export default BloodBankLogin
+export default BloodBankLogin;

@@ -1,7 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 const cookieparser = require("cookie-parser")
-const { userCollection, donorCollection, bloodDataCollection, bloodBankCollection, storyCollection } = require("./schema");
+const { userCollection, donorCollection, bloodDataCollection, bloodBankCollection, storyCollection, chatCollection } = require("./schema");
 const { passHash, comparePassword } = require("./passHash");
 const AuthenticateToken = require("./auth");
 
@@ -271,5 +271,55 @@ app.post("/upload-profile-image", async (request, response) => {
         response.status(500).json({ message: "Failed to update profile image" });
     }
 });
+
+app.post("/chat", async (req, res) => {
+    try {
+      const { message } = req.body;
+  
+      // Fetch response from Groq AI API
+      const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: "llama3-8b-8192",
+          messages: [{ role: "user", content: message }],
+        }),
+      });
+  
+      const data = await response.json();
+      
+      // Log the entire API response
+    //   console.log("Groq API Response:", data);
+  
+      // Check if API returned a valid response
+      if (!data.choices || data.choices.length === 0) {
+        return res.json({ reply: "Sorry, I didn't understand." });
+      }
+  
+      const botReply = data.choices[0].message.content;
+  
+      // Store chat in MongoDB
+      const newChat = new chatCollection({ userMessage: message, botResponse: botReply });
+      await newChat.save();
+  
+      res.json({ reply: botReply });
+    } catch (error) {
+    //   console.error("Error fetching response:", error);
+      res.status(500).json({ error: "Something went wrong!" });
+    }
+  });
+  
+//   app.get("/chat-history", async (req, res) => {
+//     try {
+//       const chats = await chatCollection.find().sort({ timestamp: -1 });
+//       res.json(chats);
+//     } catch (error) {
+//       console.error("Error retrieving chat history:", error);
+//       res.status(500).json({ error: "Error retrieving chat history" });
+//     }
+//   });
 
 module.exports = app;

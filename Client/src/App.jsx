@@ -7,7 +7,7 @@ import DonorLogin from './Components/DonorLogin'
 import SearchStock from './Components/SearchStock'
 import About from './Components/About'
 import BloodBankSignup from './Components/BloodbankSignup'
-import Navbar from './Components/Navbar'
+// import Navbar from './Components/Navbar'
 import BloodBankLogin from './Components/BloodBankLogin'
 import { UserContextProvider } from './Components/UserContext'
 import BloodStockUpdate from './Components/BloodStockUpdate'
@@ -15,6 +15,7 @@ import { Toaster } from 'react-hot-toast';
 import Search from './Components/Search'
 import WriteStory from './Components/WriteStory'
 import Stories from './Components/Stories'
+import Chat from './Components/Chat'
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
         <Route path='/Search' element={<Search/>}></Route>
         <Route path='/writeStory' element={<WriteStory/>}></Route>
         <Route path='/Stories' element={<Stories/>}></Route>
+        <Route path='/Queries' element={<Chat/>}></Route>
         <Route path='*' element={<SearchStock/>}></Route>
       </Routes>
       </UserContextProvider>
